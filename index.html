@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link href="fonts/icons/icons.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css"/>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E4YlifHHxMIbUzoqQyScZf6btC1lna0H"></script>
+    <title></title>
+</head>
+<body ng-app='myApp'>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <div class="navbar-brand" href="#"><img alt="Brand" src="images/2017-05-01_192621.png" title="Alan"></div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">My Hobby<span class="sr-only">(current)</span></a></li>
+                <li><a href="#/skills">Skill</a></li>
+                <li><a href="#/contactMe">Contact Me</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="">
+                    <i class="tn-search"></i></div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div ng-view></div>
+<footer>
+    <ul class="list-group col-md-12">
+        <li class="col-md-6 list-group-item green animated bounceInLeft" style="animation-delay: 0.5s"><i class="tn-user"></i>My Name</li>
+        <li class="col-md-6 list-group-item green animated bounceInRight" style="animation-delay: 1s">熊英</li>
+        <li class="col-md-6 list-group-item dGreen animated bounceInLeft" style="animation-delay: 0.5s"><i class="tn-mobile"></i>My Phone</li>
+        <li class="col-md-6 list-group-item dGreen animated bounceInRight" style="animation-delay: 1s">13545151041</li>
+        <li class="col-md-6 list-group-item bGreen animated bounceInLeft" style="animation-delay: 0.5s"><i class="tn-email"></i>My Email</li>
+        <li class="col-md-6 list-group-item bGreen animated bounceInRight" style="animation-delay: 1s">819427373@qq.com</li>
+        <li class="col-md-6 list-group-item black animated bounceInLeft" style="animation-delay: 0.5s"><i class="tn-home"></i>My Address</li>
+        <li class="col-md-6 list-group-item black animated bounceInRight" style="animation-delay: 1s">武汉市洪山区关谷自由城</li>
+    </ul>
+</footer>
+<script src="script/jquery-1.11.3.js"></script>
+<script src="script/angular.min.js" charset="utf-8"></script>
+<script src="script/angular-route.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script src="script/echarts.min.js"></script>
+<script>
+    angular.module('myApp', ['ngRoute'])
+   .config(['$locationProvider', function($locationProvider) {
+        $locationProvider.hashPrefix('');
+    }]).config(function ($routeProvider) {
+                $routeProvider.
+                        when('/', {
+                            templateUrl: 'view/template/hobby.html'
+                        }).
+                        when('/skills', {
+                            templateUrl: 'view/template/skills.html'
+
+                        }).
+                        when('/contactMe', {
+                            templateUrl: 'view/template/contact.html'
+
+                        }).
+                        otherwise({
+                            redirectTo: '/'
+                        });
+            });
+    $(".navbar-nav>li").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    });
+</script>
+</body>
+</html>
