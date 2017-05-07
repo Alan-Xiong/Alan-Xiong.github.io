@@ -1,0 +1,93 @@
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:400px;"></div>
+<!--<div id="container" style="width: 600px;height:400px;"></div>-->
+<div id="mySkills" style="width: 100%;height:400px;"></div>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '我的技能'
+        },
+        tooltip: {},
+        legend: {
+            data:['分数']
+        },
+        xAxis: {
+            data: ["HTML5","CSS3","AngularJS","JavaScript","Bootstrap","Less","JQuery","Dom"]
+        },
+        yAxis: {},
+        series: [{
+            barWidth : 40,
+            name: '分数',
+            type: 'bar',
+            data: [85, 90, 75, 80, 82,85,90,87],
+            itemStyle: {
+                normal: {color: function (params) {
+                    // build a color map as your need.
+                    var colorList = [
+                        'rgba(137,190,178,.8)', 'rgba(201,186,131,.8)', 'rgba(35,235,185,.6)', 'rgba(222,125,44,.8)', 'rgba(3,35,14,.5)',
+                        'rgba(244,208,0,.5)', 'rgba(163,23,21,.5)', 'rgba(182,194,154,.8)', '#F3A43B', '#60C0DD',
+                        '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                    ];
+                    return colorList[params.dataIndex]
+                }
+                }
+            }
+
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option);
+    window.addEventListener("resize",function(){
+
+        myChart1.resize();
+
+    });
+    var myChart = echarts.init(document.getElementById("mySkills"));
+    option = {
+        title: {
+            text: 'Skills'
+        },
+        tooltip: {},
+        legend: {
+            data: ['个人技能']
+        },
+        radar: {
+            // shape: 'circle',
+            indicator: [
+                { name: 'HTML5', max: 100},
+                { name: 'CSS3', max: 100},
+                { name: 'AngularJS', max: 100},
+                { name: 'JavaScript', max: 100},
+                { name: 'Bootstrap', max: 100},
+                { name: 'Less', max: 100},
+                { name: 'JQuery', max: 100},
+                { name: 'Dom', max: 100}
+            ]
+        },
+        series: [{
+            name: '我的个人技能',
+            type: 'radar',
+            areaStyle: {normal: { color:'rgba(114, 172, 209, 0.8)'}},
+            data : [
+                {
+                    value : [85, 90, 75, 80, 82,85,90,87],
+                    name : '我的个人技能'
+                }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+
+    //窗口变化后重绘
+
+    window.addEventListener("resize",function(){
+
+        myChart.resize();
+
+    });
+</script>
