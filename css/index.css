@@ -1,0 +1,31 @@
+
+.navbar-form .form-group{
+    position: relative;
+}
+.navbar-form i{
+    position: absolute;
+    color: #ccc;
+    right:3px;
+    top:3px;
+    font-size: 20px;
+}
+.footer{
+ position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.footer .list-group .list-group-item{
+    margin: 10px;
+}
+.green{
+    background: rgb(160,191,124);
+}
+.dGreen{
+    background: rgb(101,147,74);
+}
+.bGreen{
+    background: rgb(64,116,52);
+}
+.black{
+    background: rgb(3,35,14);
+}
